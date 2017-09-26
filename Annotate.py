@@ -1,7 +1,7 @@
 import hypothesis
 
 
-def make_annotation(username: str, token: str) -> None:
+def make_annotation(username: str, token: str) -> str:
     h = hypothesis.Hypothesis(username, token)  # your h username and api token (from https://hypothes.is/account/developer)
 
     url = 'https://github.com/SemanticBeeng/Hypothesis'
@@ -23,8 +23,7 @@ def make_annotation(username: str, token: str) -> None:
                         "prefix": prefix,
                         "exact": exact,
                         "suffix": suffix
-                    }
-                    ]
+                    }]
             }],
         "tags": tags,
         "text": text,
@@ -36,7 +35,8 @@ def make_annotation(username: str, token: str) -> None:
     }
 
     r = h.post_annotation(payload)
-    print(r.status_code)
+    # #print(r.status_code)
+    return "abs"
 
 
 def main():

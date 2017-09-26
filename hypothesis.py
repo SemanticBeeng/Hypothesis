@@ -106,7 +106,7 @@ class Hypothesis:
 
     def post_annotation(self, payload):
         try:
-            headers = {'Authorization': 'Bearer ' + self.token, 'Content-Type': 'application/json;charset=utf-8' }
+            headers = {'Authorization': 'Bearer ' + str(self.token), 'Content-Type': 'application/json;charset=utf-8' }
             data = json.dumps(payload, ensure_ascii=False)
             r = requests.post(self.api_url + '/annotations', headers=headers, data=data.encode('utf-8'))
             return r
