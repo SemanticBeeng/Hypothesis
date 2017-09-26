@@ -15,7 +15,7 @@ class Hypothesis:
                  domain=None, 
                  authority=None, 
                  username=None, 
-                 token: str='',
+                 token: str=None,
                  group=None, 
                  limit=None, 
                  max_search_results=None, 
@@ -90,7 +90,7 @@ class Hypothesis:
 
     def token_authenticated_get(self, url=None):
         try:
-           headers = {'Authorization': 'Bearer ' + self.token, 'Content-Type': 'application/json;charset=utf-8' }
+           headers = {'Authorization': 'Bearer ' + str(self.token), 'Content-Type': 'application/json;charset=utf-8' }
            r = requests.get(url, headers=headers)
            return r.json()
         except:

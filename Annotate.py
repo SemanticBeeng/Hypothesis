@@ -1,11 +1,14 @@
 import hypothesis
 
 
-def make_annotation(username: str, token: str) -> str:
-    h = hypothesis.Hypothesis(username=username, token=token)  # your h username and api token (from https://hypothes.is/account/developer)
+def make_annotation(username: str, token: str, group: str) -> None:
+    h = hypothesis.Hypothesis(username=username, token=token, group=group)  # your h username and api token (from https://hypothes.is/account/developer)
+
+    print('Permissions = ' + str(h.permissions))
+    print('Group = ' + h.group)
 
     url = 'https://github.com/SemanticBeeng/Hypothesis'
-    exact = 'annotation'
+    exact = 'TextQuoteSelector'
     prefix = ''
     suffix = ''
     title = 'title of the web page'
@@ -35,12 +38,11 @@ def make_annotation(username: str, token: str) -> str:
     }
 
     r = h.post_annotation(payload)
-    # #print(r.status_code)
-    return "abs"
+    print(r.status_code)
 
 
 def main():
-    make_annotation("nickdsc", "6879-kqqV-XH4sr4nWjozKuohjb7bwKVBjzQhGVtptcjwsuk")
+    make_annotation(username="nickdsc", token="6879-kqqV-XH4sr4nWjozKuohjb7bwKVBjzQhGVtptcjwsuk", group="ekcgroup")
 
 
 if __name__ == "__main__":
