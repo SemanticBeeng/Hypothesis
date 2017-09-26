@@ -2,16 +2,18 @@ import hypothesis
 
 
 def make_annotation(username: str, token: str, group: str) -> None:
-    h = hypothesis.Hypothesis(username=username, token=token, group=group)  # your h username and api token (from https://hypothes.is/account/developer)
+
+    # your h username and api token (from https://hypothes.is/account/developer)
+    h = hypothesis.Hypothesis(username=username, token=token, group=group)
 
     print('Permissions = ' + str(h.permissions))
     print('Group = ' + h.group)
 
     url = 'https://github.com/SemanticBeeng/Hypothesis'
-    exact = 'TextQuoteSelector'
+    text2Match = 'wrapper'
     prefix = ''
     suffix = ''
-    title = 'title of the web page'
+    title = 'a match'
     tags = ["tag1", "tag2"]
     text = "found it"
 
@@ -24,7 +26,7 @@ def make_annotation(username: str, token: str, group: str) -> None:
                     [{
                         "type": "TextQuoteSelector",
                         "prefix": prefix,
-                        "exact": exact,
+                        "exact": text2Match,
                         "suffix": suffix
                     }]
             }],
